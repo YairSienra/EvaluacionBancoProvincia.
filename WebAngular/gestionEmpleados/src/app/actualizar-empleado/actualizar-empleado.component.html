@@ -1,0 +1,51 @@
+<form class="example-form">
+  <div>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Codigo</mat-label>
+      <input type="text" matInput [(ngModel)]="empleado.Codigo"  [ngModelOptions]="{standalone: true}" placeholder="Codigo" />
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Apellido</mat-label>
+      <input type="text" matInput [(ngModel)]="empleado.Apellido"  [ngModelOptions]="{standalone: true}" placeholder="Apellido" />
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input type="text" matInput [(ngModel)]="empleado.Nombre" [ngModelOptions]="{standalone: true}" placeholder="Nombre" />
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Fecha de Alta</mat-label>
+      <input type="date" matInput [(ngModel)]="empleado.FechaAlta"[ngModelOptions]="{standalone: true}" placeholder="Fecha De alta" />
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Tipo Doc</mat-label>
+      <input type="text"
+             placeholder="Elegir"
+             aria-label=""
+             matInput
+             [formControl]="myControl"
+             [matAutocomplete]="auto">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="getOptionText">
+        <mat-option *ngFor="let option of (filteredOptions  | async); let i = index" [value]="option">
+          {{option.type}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Numero Documento</mat-label>
+      <input type="number" matInput [(ngModel)]="empleado.NumDocumento" [ngModelOptions]="{standalone: true}"  placeholder="Numero de Documento" />
+    </mat-form-field>
+  </div>
+</form>
+
+<button mat-button  [mat-dialog-close]="true"(click)="onEdit()">Guardar</button>
+<button mat-button [mat-dialog-close]="true">Cancelar</button>
